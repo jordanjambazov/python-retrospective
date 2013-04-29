@@ -28,11 +28,8 @@ def iterate(func):
 
 
 def zip_with(func, *iterables):
-    min_iter_length = len(min(iterables[:])) if iterables else 0
-
-    for i in range(min_iter_length):
-        res = func(*(iterable[i] for iterable in iterables))
-        yield res
+    for args in zip(*iterables):
+        yield func(*args)
 
 
 def cache(func, cache_size):
