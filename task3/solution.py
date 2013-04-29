@@ -14,18 +14,18 @@ class Person:
 
         self._children = []
 
-    def get_coevals(self, gender):
-        coevals = {parent_child for parent in ('father', 'mother')
-                   if getattr(self, parent, False) for parent_child in
-                   getattr(self, parent).children(gender) if parent_child is
-                   not self}
-        return list(coevals)
+    def get_siblings(self, gender):
+        siblings = {parent_child for parent in ('father', 'mother')
+                    if getattr(self, parent, False) for parent_child in
+                    getattr(self, parent).children(gender) if parent_child is
+                    not self}
+        return list(siblings)
 
     def get_brothers(self):
-        return self.get_coevals('M')
+        return self.get_siblings('M')
 
     def get_sisters(self):
-        return self.get_coevals('F')
+        return self.get_siblings('F')
 
     def add_parent(self, parent):
         if self not in parent.children():
