@@ -12,9 +12,6 @@ def what_is_my_sign(day, month):
     Returns string with the name of the horoscope sign.
     """
 
-    # List containing information about every sign. The first column
-    # contains the name of the sign, second and third - the start date,
-    # columns four and five - the final date.
     signs = [
         # Name        Start     End
         ['Овен',      (21, 3),  (20, 4)],
@@ -31,14 +28,12 @@ def what_is_my_sign(day, month):
         ['Риби',      (19, 2),  (20, 3)],
     ]
 
-    # Iterate through all the horoscope signs and try to find a match.
     for sign in signs:
         start_day = sign[1][0]
         start_month = sign[1][1]
         end_day = sign[2][0]
         end_month = sign[2][1]
 
-        # Return the sign name if the given date is in the interval.
         if day >= start_day and month == start_month or \
                 day <= end_day and month == end_month:
             return sign[0]
